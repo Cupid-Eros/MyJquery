@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <script src='https://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js'></script>
+    <script src="./src/jquery.table2excel.js"></script>
+</head>
+<body>
+    <div id='test'>
+        <table id="formTable">
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>小明</td>
+                <td>男</td>
+                <td>17</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>小红</td>
+                <td>女</td>
+                <td>18</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>小刚</td>
+                <td>男</td>
+                <td>18</td>
+            </tr>
+            <tr class="hidden_input">
+                <td colspan="4"><input type="text" name="note" value=""></td>
+            </tr>
+        </table>
+        
+    </div>
+    <input type="button" value="导出表格为Excel" onclick="export_excel()" />
+
+</body>
+</html>
+<script>
+    $(document).ready(function (param) {  
+        
+    })
+    $('#test')
+     //文件导出
+ function export_excel() {
+ 	//选择表格
+     var table = $('#formTable');
+     //判断表格是否存在且不为空表格
+     if (table && table.length) {
+         $(table).table2excel({
+             exclude: ".hidden_input", // 不导出的class
+             filename: "人员信息.xls", // 导出的文件名
+             fileext: ".xls", // 文件类型
+             exclude_img: true, // 是否导出图片
+             exclude_links: false, // 是否导出超链接
+             exclude_inputs: true, // 是否导出输入框中的内容
+             preserveColors: false // 是否导出背景颜色
+         });
+     }
+ }
+
+</script>

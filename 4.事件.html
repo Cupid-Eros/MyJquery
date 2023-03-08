@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <script src='https://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js'></script>
+</head>
+
+<body>
+    <h4>常见DOM事件</h4>
+    <img src="./src/assets/DOM事件.png" alt="">
+</body>
+
+</html>
+<script>
+    $(document).ready(function (param) {
+        $(document).mousedown(function (e) {
+            // 1 = 鼠标左键 left; 2 = 鼠标中键; 3 = 鼠标右键
+            console.log(e.which);
+            if (e.which == '3') {
+                $(document).contextmenu(function (e) {
+                    e.preventDefault();//阻止默认行为
+                    console.log('this:' + this);
+                    console.log('e:' + e);
+                    console.log('e.target:' + e.target);
+                });
+
+            }
+        })
+    })
+    // 只允许按下的字母键生效, 65~90是所有大写字母的键盘代码范围.
+    var validKeys = { start: 65, end: 90 };
+    $(document).keypress(validKeys, function (event) {
+        console.log(event);
+        console.log(String.fromCharCode(event.which));
+        var keys = event.data;  //拿到validKeys对象.
+        return event.which >= keys.start && event.which <= keys.end;
+    });
+</script>

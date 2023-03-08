@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <script src='https://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js'></script>
+</head>
+
+<body>
+    <div id='test' class="part">
+        <h4>append() - 在被选元素的结尾插入内容（仍然在该元素的内部） <br>
+            prepend() - 在被选元素的开头插入内容 <br>
+            after() - 在被选元素之后插入内容 <br>
+            before() - 在被选元素之前插入内容</h4>
+        <h4>
+            remove() - 删除被选元素（及其子元素） <br>
+            empty() - 从被选元素中删除子元素
+        </h4>
+        <p class="part">这是在 div 中的一个段落。</p>
+    </div>
+    <button onclick="del()">过滤删除</button>
+</body>
+
+</html>
+<script>
+    $(document).ready(function (param) {
+        (function afterText() {
+            var txt1 = "<b>I </b>";                    // 使用 HTML 创建元素
+            var txt2 = $("<i></i>").text("love ");     // 使用 jQuery 创建元素
+            var txt3 = document.createElement("big");  // 使用 DOM 创建元素
+            txt3.innerHTML = "jQuery!";
+            $("#test").after([txt1, txt2, txt3]);          // 在图片后添加文本
+        })();
+    })
+    function del(params) {
+        //$('#test').remove(".part");//过滤删除；解释一下楼上的，就是说如果子元素符合过滤器中条件而父元素不符合的话，是不会删除符合条件的子元素，即过滤器中条件只能作用于同级，不能作用于子元素。
+        $('#test>p').remove(".part");//$(selector) 语法的返回结果是一个元素的列表，即：将 $("#div1") 看作一个列表，remove() 中的筛选条件实际上是对这个列表中的元素进行筛选删除，而不会去删除这个列表中不存在的元素（子元素不在这个列表中）。
+    }
+
+</script>

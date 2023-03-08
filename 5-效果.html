@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Document</title>
+    <script src='https://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js'></script>
+</head>
+
+<body>
+    <div id='test'>
+        <h4>hide() 和 show()</h4>
+        <h4> toggle()</h4>
+        <h4>
+            fadeIn() <br>
+            fadeOut() <br>
+            fadeToggle() <br>
+            fadeTo()
+        </h4>
+        <h4>slideDown() <br>
+            slideUp() <br>
+            slideToggle()</h4>
+        <h4>animate()</h4>
+        <h4>stop()</h4>
+        <h5>可以用 animate() 方法来操作所有 CSS 属性吗？
+
+            是的，几乎可以！不过，需要记住一件重要的事情：当使用 animate() 时，必须使用 Camel 标记法书写所有的属性名，比如，必须使用 paddingLeft 而不是 padding-left，使用 marginRight 而不是 margin-right，等等。
+            
+            同时，色彩动画并不包含在核心 jQuery 库中。
+            
+            如果需要生成颜色动画，您需要从 jquery.com 下载 颜色动画 插件。</h5>
+    </div>
+    <button class="hidebtn">点我隐藏</button>
+    <div id="div4callBack">
+        <div>隐藏及设置回调函数</div>
+        <div>隐藏及设置回调函数</div>
+        <div>隐藏及设置回调函数</div>
+    </div>
+
+</body>
+
+</html>
+<script>
+    $(document).ready(function (param) {
+
+    })
+    $("#test").click(() => {
+        $("#test").hide(1000, "linear", function () {
+            alert("hide() 方法已完成!");
+            $("#test").show(1000, "swing", function () {
+                alert("show() 方法已完成!");
+            });
+        });
+    })
+    $(".hidebtn").click(function () {
+        //$(selector) 选中的元素的个数为 n 个，则 callback 函数会执行 n 次。
+        //对于这里，当 callback 函数加上括号时，函数立即执行，只会调用一次， 如果不加括号，元素显示或隐藏后调用函数，才会调用多次。
+
+        // popalert 不加括号() 
+        //$("div").hide(1000, "linear", popalert)
+
+        // popalert 加括号() // 只需要记住 有括号就先执行括号里面的,就跟我们数学基础运算一样
+        $("#div4callBack div").hide(1000, "linear", popalert())
+
+    });
+    function popalert() {
+        alert("Hide() 方法已完成!");
+    }
+</script>

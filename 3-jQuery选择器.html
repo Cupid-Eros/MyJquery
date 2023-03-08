@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Document</title>
+<script src='https://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js'></script>
+</head>
+<body>
+    <h4>jQuery 选择器</h4>
+    <h5>它基于已经存在的 CSS 选择器，除此之外，它还有一些自定义的选择器。</h5>
+    <h5>通过 $(":button") 可以选取所有 type="button" 的 input 元素 和 button 元素，如果去掉冒号，$("button")只能获取 button 元素。</h5>
+    <input type="button" value="input-btn">
+    <button>basic-btn</button>
+    <img src="./src/assets/选择器.png" alt="">
+</body>
+</html>
+<script>
+    $(document).ready(function name(params) {
+        $("button").click()
+        $(":button").click()
+    })
+</script>
